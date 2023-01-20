@@ -35,19 +35,25 @@ const item3 = new Item({
 
 const defaultItems = [item1, item2, item3];
 
-Item.insertMany(defaultItems, (err)=>{
-  (err)
-  ? console.log(err)
-  : console.log("document created successfully")
-});
+// Item.insertMany(defaultItems, (err)=>{
+//   (err)
+//   ? console.log(err)
+//   : console.log("document created successfully")
+// });
 
 
-const items = ["Buy Food", "Cook Food", "Eat Food"];
+// const items = ["Buy Food", "Cook Food", "Eat Food"];
 const workItems = [];
 
 app.get("/", (req, res)=> {
-    let day = date.getDate();
-    res.render("list", {listTitle: day, newListItems: items});
+    Item.find({}, (err, item)=>{
+      (err) 
+      ? console.log(err) 
+      : res.render("list", {listTitle: "Today", newListItems: item});
+    });
+
+    // let day = date.getDate();
+
 });
 
 app.post("/", (req, res)=> {

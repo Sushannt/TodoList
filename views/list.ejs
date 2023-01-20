@@ -9,14 +9,13 @@
     <div class="box">
 
         <ul>
-            <% for(var i=0; i<newListItems.length; i++){  %>
-               
+            <% newListItems.forEach(item =>{ %>
                 <div class="item">
                     <input type="checkbox">
-                    <p> <%= newListItems[i] %> </p>    
+                    <p> <%= item.name %> </p>    
                 </div>
-               
-            <% } %>
+        <%  }) %>
+
         </ul>
 
         <form class="item" action="/" method="post" >
